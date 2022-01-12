@@ -1,5 +1,4 @@
-import { sum } from "./main";
-
+const { sum } = require("./main");
 
 describe('sum', () => {
 	it('2 + 2 = 4', () => {
