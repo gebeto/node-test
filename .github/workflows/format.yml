@@ -3,7 +3,7 @@ name: Format
 on: issue_comment
 
 jobs:
-  build:
+  format:
     # if: ${{ github.event.comment.body == '/format' }}
     runs-on: ubuntu-latest
 
