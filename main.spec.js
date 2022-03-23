@@ -12,4 +12,9 @@ describe('sum', () => {
 	it('2 + 2 != 5', () => {
 		expect(sum(2, 2)).not.toBe(5);
 	});
+
+	it('2 + 3 == 5', () => {
+		expect(sum(2, 3)).not.toBe(5);
+
+	});
 });
