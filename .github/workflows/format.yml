@@ -17,3 +17,8 @@ jobs:
         cache: 'npm'
       - run: npm ci
       - run: npx prettier
+    - name: push changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: '.'
+        commit: 'Code Format'
