@@ -6,7 +6,7 @@ on:
 
 jobs:
   format:
-    if: ${{ action.comment.body == "/format" }}
+    if: ${{ github.event.issue.comment.body == "/format" }}
 
     runs-on: ubuntu-latest
 
