@@ -5,8 +5,8 @@ on:
     types: [created]
 
 jobs:
-  build:
-    if: ${{ github.event.comment.body == '/format' }}
+  format:
+    if: ${{ action.comment.body == "/format" }}
 
     runs-on: ubuntu-latest
 
