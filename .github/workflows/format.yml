@@ -6,12 +6,11 @@ on:
 
 jobs:
   format:
-    # if: ${{ github.event.issue.comment.body == "/format" }}
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
