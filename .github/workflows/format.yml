@@ -1,6 +1,8 @@
 name: Format
 
-on: issue_comment
+on:
+  issue_comment:
+    types: [created]
 
 jobs:
   build:
