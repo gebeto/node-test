@@ -4,6 +4,7 @@ on: issue_comment
 
 jobs:
   build:
+    if: ${{ github.event.comment.body == '/format' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -14,9 +15,9 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
-      - run: npm ci
-      - run: npx prettier
-      - run: echo "${{ github.event }}"
+    - run: npm ci
+    - run: npx prettier
+    - run: echo "${{ github.event }}"
     - name: push changes
       uses: EndBug/add-and-commit@v9
       with:
