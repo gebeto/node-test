@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/gebeto/node-test#readme",
   "dependencies": {
-    "jest": "^27.4.7"
+    "eslint": "^8.11.0",
+    "jest": "^27.4.7",
+    "prettier": "^2.6.0"
   }
 }
