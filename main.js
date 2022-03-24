@@ -1,6 +1,7 @@
 const sum = (a, b) => {
-	return b + a;
-}
+  return b + a;
 
+	
+};
 
 exports.sum = sum;
