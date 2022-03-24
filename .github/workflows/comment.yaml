@@ -9,14 +9,12 @@ jobs:
       - run: |
           echo "Format..." > $(date +"%Y-%m-%dT%H:%M:%S%z")
       - name: Commit and push Code Format
-        uses: devops-infra/action-commit-push@v0.9.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Code Format
-      - name: Comment PR
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Code format'
-          # message: 'Formatted!'
-          # pr_number: ${{ github.event.issue.number }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Comment PR
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Formatted!'
+          pr_number: ${{ github.event.issue.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
