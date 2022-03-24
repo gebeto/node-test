@@ -20,5 +20,6 @@ jobs:
     steps:
       - run: |
           echo A comment on issue $NUMBER
+          echo A comment on issue ${{ github.event }}
         env:
           NUMBER: ${{ github.event.issue.number }}
