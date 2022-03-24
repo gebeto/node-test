@@ -9,9 +9,9 @@ jobs:
     steps:
       - run: |
           echo A comment on PR $NUMBER
-          echo A comment on issue ${{ toJSON(github.event) }}
+          echo "A comment on issue $NUMBER"
         env:
-          NUMBER: ${{ github.event.issue.number }}
+          NUMBER: "${{ toJSON(github.event) }}"
 
   issue_commented:
     # This job only runs for issue comments
