@@ -15,7 +15,8 @@ jobs:
           commit_message: Code Format
       - name: Comment PR
         uses: EndBug/add-and-commit@v9
-        message: 'Code format'
+        with:
+          message: 'Code format'
           # message: 'Formatted!'
           # pr_number: ${{ github.event.issue.number }}
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
