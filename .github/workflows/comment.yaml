@@ -3,7 +3,7 @@ on: issue_comment
 jobs:
   issue_commented:
     name: PR comment
-    if: ${{ github.event.comment.body == '/format' }}
+    if: ${{ github.event.comment.body == 'format' }}
     runs-on: ubuntu-latest
     steps:
       - run: |
