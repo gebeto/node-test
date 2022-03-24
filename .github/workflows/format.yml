@@ -1,11 +1,9 @@
-name: Format
-
 on:
   issue_comment:
     types: [created, deleted]
 
 jobs:
-  format:
+  comment_format:
     # if: ${{ github.event.comment.body == '/format' }}
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
