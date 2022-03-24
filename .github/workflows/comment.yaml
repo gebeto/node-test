@@ -10,9 +10,6 @@ jobs:
           echo "Format..." > $(date +"%Y-%m-%dT%H:%M:%S%z")
       - name: Prettify code
         uses: creyD/prettier_action@v4.2
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write *.js
       - name: Comment PR
         uses: EndBug/add-and-commit@v9
         with:
