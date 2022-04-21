@@ -11,13 +11,19 @@ jobs:
     if: ${{ github.event.comment.body == '/test' }}
     runs-on: ubuntu-latest
     steps:
+    - name: Comment PR
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: 'Start testing!!!!!'
+        pr_number: ${{ github.event.issue.number }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
 
-        
+
           🔄 Start testing...
     - uses: actions/checkout@v2
     - name: Install modules
