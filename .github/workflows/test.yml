@@ -19,25 +19,20 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: '👋 Thanks for the command, start building!'
+            body: '🔄 Start testing...'
           })
-    - uses: peter-evans/create-or-update-comment@v2
-      with:
-        comment-id: ${{ github.event.comment.id }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-
-
-          🔄 Start testing...
     - uses: actions/checkout@v2
     - name: Install modules
       run: npm install
     - name: Run tests
       run: npm run test
-    - uses: peter-evans/create-or-update-comment@v2
+    - uses: actions/github-script@v3
       with:
-        comment-id: ${{ github.event.comment.id }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-
-          ✅ Tested 🚀
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '✅ Tested 🚀'
+          })
