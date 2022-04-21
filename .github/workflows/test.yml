@@ -17,7 +17,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
 
-          🔄 Start testing
+        
+          🔄 Start testing...
     - uses: actions/checkout@v2
     - name: Install modules
       run: npm install
@@ -28,5 +29,5 @@ jobs:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-        
+
           ✅ Tested 🚀
