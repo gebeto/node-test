@@ -7,9 +7,8 @@ on:
     types: [created]
 
 jobs:
-  job01:
-    #  if: contains(github.event.comment.body, '/deploy')    # check if the comments come from pull request, exclude those from issue.
-    runs-on: [ubuntu-latest]
+  build:
+    runs-on: ubuntu-latest
     steps:
     - name: print body
       env:
