@@ -7,11 +7,6 @@ on:
     types: [created]
 
 jobs:
-  # test:
-  #   - name: Echo body
-  #     env:
-  #       COMMENT: ${{ toJSON(github.event) }}
-  #     run: echo "COMMENT - $COMMENT"
   build:
     if: ${{ github.event.comment.body == '/test' }}
     runs-on: ubuntu-latest
@@ -27,3 +22,9 @@ jobs:
       run: npm install
     - name: Run tests
       run: npm run test
+    - uses: peter-evans/create-or-update-comment@v2
+    with:
+      comment-id: ${{ github.event.comment.id }}
+      token: ${{ secrets.GITHUB_TOKEN }}
+      body: |
+        \nTested 🚀
