@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: peter-evans/create-or-update-comment@v2
       with:
-        issue-number: ${{ github.event.issue.pull_request.id }}
+        comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           **Start testing**
