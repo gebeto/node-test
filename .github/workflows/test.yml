@@ -7,28 +7,24 @@ on:
     types: [created]
 
 jobs:
+  # test:
+  #   - name: Echo body
+  #     env:
+  #       COMMENT: ${{ toJSON(github.event) }}
+  #     run: echo "COMMENT - $COMMENT"
   build:
     if: ${{ github.event.comment.body == '/test' }}
     runs-on: ubuntu-latest
     steps:
-    - uses: mshick/add-pr-comment@v1
+    - uses: peter-evans/create-or-update-comment@v2
+      id: start-comment
       with:
-        message: |
+        body: |
           **Start testing**
-          🌏
-          !
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+        token: ${{ secrets.GITHUB_TOKEN }}
+        issue-number: ${{ github.event.issue.pull_request.id }}
     - uses: actions/checkout@v2
     - name: Install modules
       run: npm install
     - name: Run tests
       run: npm run test
-    - uses: mshick/add-pr-comment@v1
-      with:
-        message: |
-          **Tested successfully**
-          🌏
-          !
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
