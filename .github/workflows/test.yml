@@ -23,8 +23,8 @@ jobs:
     - name: Run tests
       run: npm run test
     - uses: peter-evans/create-or-update-comment@v2
-    with:
-      comment-id: ${{ github.event.comment.id }}
-      token: ${{ secrets.GITHUB_TOKEN }}
-      body: |
-        \nTested 🚀
+      with:
+        comment-id: ${{ github.event.comment.id }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        body: |
+          \nTested 🚀
