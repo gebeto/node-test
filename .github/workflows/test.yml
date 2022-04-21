@@ -17,12 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: peter-evans/create-or-update-comment@v2
-      id: start-comment
       with:
+        issue-number: ${{ github.event.issue.pull_request.id }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           **Start testing**
-        token: ${{ secrets.GITHUB_TOKEN }}
-        issue-number: ${{ github.event.issue.pull_request.id }}
     - uses: actions/checkout@v2
     - name: Install modules
       run: npm install
