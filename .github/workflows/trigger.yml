@@ -1,0 +1,16 @@
+name: Trigger
+
+on:
+  pull_request:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print body
+      env:
+        BODY: ${{ github.event.comment.body }}
+      run: echo "Body - $BODY"
