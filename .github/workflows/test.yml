@@ -38,9 +38,11 @@ jobs:
     - name: Install modules
       run: npm install
     - name: Run tests
-      run: npm run test
+      id: tests
+      run: echo "::set-output name=jest-output::$(npm run test)\n"
+      # run: npm run test
     - uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: "\n\nBuild done 🚀. Hosted on: ${{github.event.comment.id}}"
+        body: "\n\nBuild done 🚀. Hosted on: ${{github.event.comment.id}}\n\n```bash\n${{steps.tests.outputs.stdout}}\n```\n"
