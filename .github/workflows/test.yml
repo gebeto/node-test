@@ -31,7 +31,7 @@ jobs:
       with:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: "\n\nStart building chormatic... 🚀"
+        body: "\n\n 🔄 Start building chormatic..."
     - uses: actions/checkout@v2
       with:
         ref: ${{ fromJSON(steps.get-pr.outputs.result).head.sha }}
@@ -39,10 +39,10 @@ jobs:
       run: npm install
     - name: Run tests
       id: tests
-      run: echo "::set-output name=jest-output::$(npm run test)\n"
+      run: echo "::set-output name=jest_output::$(npm run test)\n"
       # run: npm run test
     - uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: "\n\nBuild done 🚀. Hosted on: ${{github.event.comment.id}}\n\n```bash\n${{steps.tests.outputs.stdout}}\n```\n"
+        body: "\n\n ✅ Build done. Hosted on: ${{github.event.comment.id}}\n\n```bash\n${{steps.tests.outputs.jest_output}}\n```\n"
