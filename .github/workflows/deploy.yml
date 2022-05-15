@@ -1,9 +1,10 @@
 name: Deploy
 
 permissions:
-  contents: read
   pages: write
+  contents: read
   id-token: write
+  deployments: write
 
 on:
   push:
@@ -39,8 +40,12 @@ jobs:
         if-no-files-found: warn
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v1-beta
