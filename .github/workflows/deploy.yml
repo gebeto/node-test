@@ -1,7 +1,7 @@
 name: Classic Deploy
 
 permissions:
-  contents: [read, write]
+  contents: write
 
 on:
   push:
