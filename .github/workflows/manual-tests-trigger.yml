@@ -1,4 +1,4 @@
-name: Trigger
+name: Manual Tests Trigger
 
 on:
   pull_request:
