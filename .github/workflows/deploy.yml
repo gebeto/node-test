@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  push:
+   - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install modules
+      run: npm install
+
+    - name: Run tests
+      id: tests
+      run: npm run test

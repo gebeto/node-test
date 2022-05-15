@@ -15,6 +15,7 @@ jobs:
       id: get-pr
       with:
         script: |
+          /*
           const request = {
             owner: context.repo.owner,
             repo: context.repo.repo,
@@ -27,9 +28,13 @@ jobs:
           } catch (err) {
             core.setFailed(`Request failed with error ${err}`)
           }
+          */
+          return 'trigger2'
     - uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ github.event.comment.id }}
+        issue-number: ${{ github.event.issue.number }}
+        edit-mode: replace
         token: ${{ secrets.GITHUB_TOKEN }}
         body: "\n\n 🔄 Start building chormatic..."
     - uses: actions/checkout@v2
@@ -44,4 +49,6 @@ jobs:
       with:
         comment-id: ${{ github.event.comment.id }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: "\n\n ✅ Build done. Hosted on: ${{github.event.comment.id}}\n\n```bash\n${{steps.tests.outputs.stdout}}\n```\n"
+        body: "\n\n ✅ Build done. Hosted on: ${{github.event.comment.id}}\n\n```bash\n${{env.MY_STRING}}\n```\n"
+        reactions: 'rocket'
+        edit-mode: replace
