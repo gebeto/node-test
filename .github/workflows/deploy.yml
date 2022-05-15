@@ -17,3 +17,11 @@ jobs:
     - name: Run tests
       id: tests
       run: npm run test
+    
+    - name: create html
+      run: |
+        mkdir dist
+        echo 'Hello world' > index.html
+
+    - name: Deploy pages
+      uses: actions/deploy-pages@v1.0.4
