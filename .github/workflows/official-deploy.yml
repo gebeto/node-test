@@ -1,14 +1,14 @@
+name: Official Deploy
+
 permissions:
   pages: write
   contents: read
   id-token: write
   deployments: write
 
-name: Deploy
-
 on:
   push:
-    branches: [ main, gh-pages ]
+    branches: [ gh-pages ]
   workflow_dispatch:
 
 jobs:
@@ -16,17 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        ref: gh-pages
 
-    - name: Install modules
-      run: npm install
-
-    - name: Run tests
-      id: tests
-      run: npm run test
-    
-    - name: create html
+    - name: Create html
       run: |
         mkdir dist
         echo 'Hello world' > dist/index.html
