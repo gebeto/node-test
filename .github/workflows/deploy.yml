@@ -1,4 +1,4 @@
-name: Official Deploy
+name: Classic Deploy
 
 permissions:
   contents: read|write
